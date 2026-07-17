@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+build/
+.vite/
+
+# Env
+.env
+.env.local
+*.local
+
+# ML artifacts
+ml/mlruns/*
+!ml/mlruns/.gitkeep
+ml/model_store/**/*
+!ml/model_store/**/.gitkeep
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+
+# Terraform
+terraform/**/.terraform/
+terraform/**/*.tfstate
+terraform/**/*.tfstate.backup
+
+# Logs
+*.log
