@@ -1,8 +1,7 @@
 # Security Policy
 
 ## Reporting a Vulnerability
-Please email security@insightai.example (placeholder) with details.
-Do not open public GitHub issues for security vulnerabilities.
+Raise a GitHub issue with the `security` label or Jira ticket in the `SECURITY` project. Please include a detailed description of the vulnerability, steps to reproduce, and any relevant screenshots or logs.
 
 ## Supported Versions
 Only the latest `main` branch and the most recent tagged release receive
