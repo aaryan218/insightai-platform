@@ -1,0 +1,327 @@
+{
+  "info": {
+    "name": "Final Project ML FastAPI",
+    "_postman_id": "ml-fastapi-test-collection",
+    "description": "Postman collection for testing FastAPI ML Server with JWT and Tokens",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"dvir\", \"password\": \"1234\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/signup",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8001",
+          "path": [
+            "signup"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"dvir\", \"password\": \"1234\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8001",
+          "path": [
+            "login"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Add Tokens",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"dvir\", \"credit_card\": \"1111-2222-3333-4444\", \"amount\": 20}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/add_tokens",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8001",
+          "path": [
+            "add_tokens"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Train Model",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "model_name",
+              "value": "linear"
+            },
+            {
+              "key": "features",
+              "value": "age,salary,rooms"
+            },
+            {
+              "key": "label",
+              "value": "price"
+            },
+            {
+              "key": "file",
+              "type": "file",
+              "src": "train_sample.csv"
+            },
+            {
+              "key": "model_params",
+              "value": "{}"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8001/train",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8001",
+          "path": [
+            "train"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Models List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8001/models",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8001",
+          "path": [
+            "models"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Predict",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"age\": 35, \"salary\": 70000, \"rooms\": 3}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/predict/linear",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8001",
+          "path": [
+            "predict",
+            "linear"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tokens Info",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8001/tokens/dvir",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8001",
+          "path": [
+            "tokens",
+            "dvir"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Auto EDA",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "train_sample.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8001/eda",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8001",
+          "path": [
+            "eda"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Auto EDA Report (HTML)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "train_sample.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8001/eda/report",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8001",
+          "path": [
+            "eda",
+            "report"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Remove User",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"dvir\", \"password\": \"1234\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/remove_user",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8001",
+          "path": [
+            "remove_user"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "access_token",
+      "value": ""
+    }
+  ]
+}
