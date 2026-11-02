@@ -1,10 +1,10 @@
-from pydantic import BaseModel
+from pydantic import BaseModel  # type: ignore
 from typing import List, Dict, Any
-import time, os, json, jwt
+import time, os, json, jwt      # type: ignore
 
-from sklearn.linear_model import LinearRegression, LogisticRegression
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.svm import SVR
+from sklearn.linear_model import LinearRegression, LogisticRegression    # type: ignore
+from sklearn.ensemble import RandomForestRegressor    # type: ignore
+from sklearn.svm import SVR        # type: ignore
 
 try:
     from xgboost import XGBRegressor, XGBClassifier
@@ -14,7 +14,7 @@ except Exception:
 # ===== JWT =====
 SECRET_KEY = os.environ.get("APP_SECRET_KEY", "change_me_in_prod")
 ALGORITHM = "HS256"
-TOKEN_TTL_SECONDS = 60 * 60 * 4  # 4h
+TOKEN_TTL_SECONDS = 60 * 60 * 4  # 4h 
 
 def create_jwt(username: str) -> str:
     now = int(time.time())
