@@ -1,9 +1,9 @@
 # Buisness Logic layer
 import io, os, time, hashlib, logging
 from typing import Dict, Any, List
-import pandas as pd
+import pandas as pd      # type: ignore
 
-from sklearn.metrics import mean_absolute_error, r2_score, accuracy_score, f1_score
+from sklearn.metrics import mean_absolute_error, r2_score, accuracy_score, f1_score     # type: ignore
 
 from models import MODEL_REGISTRY
 from dal import (
@@ -74,6 +74,9 @@ def train_model(username: str, df: pd.DataFrame,
 
     X = df[features].apply(pd.to_numeric, errors="coerce")
     y = pd.to_numeric(df[label], errors="coerce") if model_type == "regression" else df[label]
+
+
+
 
     tmp = pd.concat([X, y], axis=1).dropna()
     X, y = tmp[features], tmp[label]
