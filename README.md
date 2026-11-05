@@ -24,6 +24,17 @@ See `docs/architecture/system_overview.md` and `docs/architecture/adr/`.
 See `LICENSE`.
 
 
+add n8n for smooth workflow and easy deploy of this insight ai
+`
+docker volume create n8n_data
 
+docker run -it --rm \
+ --name n8n \
+ -p 5678:5678 \
+ -e GENERIC_TIMEZONE="<YOUR_TIMEZONE>" \
+ -e TZ="<YOUR_TIMEZONE>" \
+ -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
+ -v n8n_data:/home/node/.n8n \
+ n8nio/n8n
 
-
+`
